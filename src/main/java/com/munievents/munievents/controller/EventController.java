@@ -1,66 +1,67 @@
 package com.munievents.munievents.controller;
 
 import com.munievents.munievents.entity.Event;
+import com.munievents.munievents.service.EventService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @RestController
+@RequestMapping(path = "api/v1")
 public class EventController {
-    private ArrayList<Event> eventos;
 
-    //TODO: constructor vacio para inicializar las variables  en este caso los Eventos
-    //TODO: es buena practica inicializar las variables en el constructor de clase
-    EventController(){
-        eventos = new ArrayList<>();
-        eventos.add(new Event(1,"Niky Nicole","La artista es representante de la nueva generación musical y una de las voces femeninas latinas más relevantes de la escena urbana nos presentará en directo su nuevo trabajo \"Alma\".","Viernes 25-04-2024", 150.00));
-        eventos.add(new Event(2,"Niky Nicole","La artista es representante de la nueva generación musical y una de las voces femeninas latinas más relevantes de la escena urbana nos presentará en directo su nuevo trabajo \"Alma\".","Viernes 25-04-2024", 150.00));
-        eventos.add(new Event(3,"Niky Nicole","La artista es representante de la nueva generación musical y una de las voces femeninas latinas más relevantes de la escena urbana nos presentará en directo su nuevo trabajo \"Alma\".","Viernes 25-04-2024", 150.00));
+    @Autowired
+    private final EventService eventService;
+
+    public EventController(EventService eventService) {
+        this.eventService = eventService;
     }
 
-    //TODO: obteniendo todos los eventos
+    //TODO: obtenemos todos los eventos
     @GetMapping("/events")
-    public List<Event> getAllEvents(){
-
-        return eventos;
+    public List<Event> getAll() {
+        return eventService.getEvents();
     }
 
-    //TODO: obteniendo un evento por id
-    @GetMapping("/events/{id}")
-    public Optional<Event> getEventId(@PathVariable("id") int eventId) {
-        eventId = eventId-1;
-        return Optional.ofNullable(eventos.get(eventId));
-    }
-
-    //TODO: creacion de un evento nuevo
-    @PostMapping("/evento")
-    public String setEvent(@RequestBody Event event){
-        String mensaje = "Evento insertado correctamente XD!!";
-        if(event.getNameEvent().equals(null)){
-            mensaje = "El nombre no puede ser nullo";
-        }
-        eventos.add(event);
-        return mensaje;
+    @GetMapping("/events/{idEvent}")
+    public Optional<Event> getById(@PathVariable("idEvent") Long eventId) {
+        return eventService.getEvent(eventId);
     }
 
 
-    //TODO: enviamos en en el body a un Evento y actualizamos por medio de id
+    //TODO: enviamos el body un nuevo evento
+    @PostMapping("/events")
+    public String saveEvent(@RequestBody Event event) {
+        eventService.saveOrUpdate(event);
+        return "Evento creado correctamente";
+    }
+
+    //TODO: actualizamos un evento por su id
     @PutMapping("/events/{id}")
-    public String saveUpdateEvent(@PathVariable("id") int eventId, @RequestBody Event event) {
-        // eventos.get(eventId).setId(event.getId());
-        eventos.get(eventId).setNameEvent(event.getNameEvent());
-        eventos.get(eventId).setDateEvent(event.getDateEvent());
-        eventos.get(eventId).setPrice(event.getPrice());
-        return "Usuario actualizado correctamente";
+    public String saveUpdateEvent(@PathVariable("id") Long eventId, @RequestBody Event event) {
+
+        String message = "";
+        try {
+            if (!eventService.getEvent(eventId).isEmpty()) {
+                eventService.saveOrUpdate(event);
+                message = "Evento actualizado correctamente";
+            } else {
+                message = "Evento no existe";
+            }
+        } catch (Exception ex) {
+            message = ex.getMessage();
+        }
+        return message;
     }
 
 
-    //TODO: elimina un evento por su id
+    //TODO: enviamos como parametros el id del evento para eliminar el vento
     @DeleteMapping("/events/{id}")
-    public String  deleteEventId(@PathVariable("id") int eventId) {
-        eventos.remove(eventId);
-        return "Evento eliminado correctamente!";
+    public String delete(@PathVariable("id") Long eventId) {
+        eventService.delete(eventId);
+        return "Evento eliminado correctamente";
+
     }
 }

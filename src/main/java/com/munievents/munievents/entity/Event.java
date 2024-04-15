@@ -1,18 +1,22 @@
 package com.munievents.munievents.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import jakarta.persistence.*;
+import lombok.*;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+
+@Entity
+@Table(name = "evento")
+@Data
 public class Event {
-    private int id;
-    private String nameEvent;
-    private String description;
-    private String dateEvent;
-    private double price;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String titulo;
+    private String descripcion;
+    private String fecha_inicio;
+    private String fecha_fin;
+    private String ubicacion;
+    private double precio;
+    private String fecha_creacion;
+    private int categoria_idcategoria;
 }
