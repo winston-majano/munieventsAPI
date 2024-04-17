@@ -64,4 +64,11 @@ public class EventController {
         return "Evento eliminado correctamente";
 
     }
+
+    //TODO: ejemplo de JPQL para mostrar solo un dato del query personalizado
+    @GetMapping("/events/jpql/{idEvent}")
+    public String getNameEventoById(@PathVariable("idEvent") Long idEvent) {
+        return eventService.getNameEventoById(idEvent);
+    }
+
 }
