@@ -9,7 +9,7 @@ import org.springframework.stereotype.Repository;
 public interface EventRepository extends JpaRepository<Event, Long> {
 
     //TODO: querys personalizadas
-    @Query(value = "select e.titulo from Event e where  e.id = ?1")
+    @Query(value = "select e.title from Event e where  e.id = ?1")
      String getNameEventoById(Long id);
 
 

@@ -5,18 +5,19 @@ import lombok.*;
 
 
 @Entity
-@Table(name = "evento")
+@Table(name = "event")
 @Data
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titulo;
-    private String descripcion;
-    private String fecha_inicio;
-    private String fecha_fin;
-    private String ubicacion;
-    private double precio;
-    private String fecha_creacion;
-    private int categoria_idcategoria;
+    private String title;
+    private String description;
+    private String start_date;
+    private String end_date;
+    private String location;
+    private double price;
+    private String creation_date;
+    private int id_category;
+    private int coins;
 }
