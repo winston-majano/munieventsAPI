@@ -15,17 +15,18 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="usuario")
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String imagen_usuario;
-    private String correo;
-    private String telefono;
+    private String image_user;
+    private String email;
+    private String phone;
+    private String full_name;
     private String alias;
-    private double monedas;
-    private int cantidad_evento_sub;
-    private String nombre_completo;
+    private int qty_event_sub;
+    private int rol_user_id;
+    private String password;
 
 }
