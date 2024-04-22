@@ -1,5 +1,6 @@
 package com.munievents.munievents.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -18,6 +19,11 @@ public class Event {
     private String location;
     private double price;
     private String creation_date;
-    private int id_category;
+
+    //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
+    //@JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    private Category category;
     private int coins;
 }
