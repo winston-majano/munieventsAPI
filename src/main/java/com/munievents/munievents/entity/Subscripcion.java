@@ -15,11 +15,12 @@ public class Subscripcion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String descripcion;
-    private Double precio;
-    private String fecha_inicio_sub;
-    private String fecha_fin_sub;
-    private int planes_idplanes;
+    private String description;
+    private Double price;
+    private String start_date_sub;
+    private String end_date_sub;
+    private int plan_id;
+
     public void setId(int subscripId) {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'setId'");
