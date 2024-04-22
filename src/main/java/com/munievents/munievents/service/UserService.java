@@ -42,4 +42,9 @@ public class UserService {
     public User save(User usuario) {
         return userRepository.save(usuario);
     }
+
+    public User  findOneByEmail(String email){
+        User  login = userRepository.findOneByEmail(email);
+        return  login;
+    }
 }

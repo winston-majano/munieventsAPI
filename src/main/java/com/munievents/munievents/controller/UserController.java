@@ -2,6 +2,7 @@ package com.munievents.munievents.controller;
 
 import java.util.*;
 
+import com.munievents.munievents.entity.UserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -57,4 +58,16 @@ public class UserController {
         userService.save(usuario);
         return "OK";
     }
+
+    //TODO: login
+    @PostMapping("/usersLogin")
+    public String  add(@RequestBody UserLogin userLogin) {
+        User usario = userService.findOneByEmail (userLogin.getEmail());
+        if(usario.getPassword().equals(userLogin.getPassword())){
+            return "Usuario logueado correctamente";
+        }else{
+            return "Usuario no encontrado";
+        }
+    }
+
 }
