@@ -2,7 +2,7 @@ package com.munievents.munievents.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.munievents.munievents.entity.News;
-import com.munievents.munievents.service.NoticiaService;
+import com.munievents.munievents.service.NewsService;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,46 +16,46 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @RestController
 @RequestMapping(path = "/api/v1")
-public class NoticiaController {
+public class NewsController {
 
 
     @Autowired
-    private final NoticiaService noticiaService;
+    private final NewsService newsService;
     
     //Se agrega el metodo constructor inicilizando el noticiaService
-    public NoticiaController(NoticiaService noticiaService) {
-        this.noticiaService = noticiaService;
+    public NewsController(NewsService newsService) {
+        this.newsService = newsService;
     }
 
 
     //Nos lee todas las noticias
-    @GetMapping("/noticia")
-    public List<News> getNoticia() {
-        return noticiaService.getNoticia();
+    @GetMapping("/news")
+    public List<News> getNews() {
+        return newsService.getNews();
     }
 
     //Para buscar una noticia por su id
-    @GetMapping("/noticia/{idNoticia}")
-    public Optional<News> getNoticia(@PathVariable("idNoticia") Long id) {
-        return noticiaService.getNoticia(id);
+    @GetMapping("/news/{idNews}")
+    public Optional<News> getNews(@PathVariable("idNews") Long id) {
+        return newsService.getNews(id);
     }
 
     //Para guardar informacion
-    @PostMapping("/noticia")
-    public String saveEvent(@RequestBody News noticia) {
-        noticiaService.saveOrUpdate(noticia);
-        return "Evento creado correctamente";
+    @PostMapping("/news")
+    public String saveNews(@RequestBody News news) {
+        newsService.saveOrUpdate(news);
+        return "Noticia creada correctamente";
     }
 
     //TODO: actualizamos un evento por su id
-    @PutMapping("/noticia/{id}")
-    public String saveUpdateNoticia(@PathVariable("id") Long noticiaId, @RequestBody News noticia) {
+    @PutMapping("/news/{id}")
+    public String saveUpdateNews(@PathVariable("id") Long newsId, @RequestBody News news) {
 
         String message = "";
         try {
           
-            if (!noticiaService.getNoticia(noticiaId).isEmpty()) {
-                noticiaService.saveOrUpdate(noticia);
+            if (!newsService.getNews(newsId).isEmpty()) {
+                newsService.saveOrUpdate(news);
                 message = "Noticia actualizado correctamente";
             } else {
                 message = "Noticia no existe";
@@ -68,9 +68,9 @@ public class NoticiaController {
 
 
     //TODO: enviamos como parametros el id del evento para eliminar el vento
-    @DeleteMapping("/noticia/{id}")
-    public String delete(@PathVariable("id") Long noticiaId) {
-        noticiaService.delete(noticiaId);
+    @DeleteMapping("/news/{id}")
+    public String delete(@PathVariable("id") Long newsId) {
+        newsService.delete(newsId);
         return "Noticia eliminado correctamente";
 
     }

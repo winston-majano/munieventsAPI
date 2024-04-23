@@ -1,7 +1,7 @@
 package com.munievents.munievents.service;
 
 import com.munievents.munievents.entity.News;
-import com.munievents.munievents.repository.INoticiaRepository;
+import com.munievents.munievents.repository.INewsRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,33 +12,33 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-public class NoticiaService {
+public class NewsService {
 
     @Autowired
-    INoticiaRepository noticiaRepository;
+    INewsRepository newsRepository;
 
     //TODO: retornamos todos los eventos
     @GetMapping
-    public List<News> getNoticia() {
-        return noticiaRepository.findAll();
+    public List<News> getNews() {
+        return newsRepository.findAll();
     }
 
     //TODO: buscamos un evento por su id
     @GetMapping
-    public Optional<News> getNoticia(Long id) {
-        return noticiaRepository.findById(id);
+    public Optional<News> getNews(Long id) {
+        return newsRepository.findById(id);
     }
    
     //TODO:guarda o actualiza el evento
     @PostMapping
-    public void saveOrUpdate(@RequestBody News noticiaId) {
-        noticiaRepository.save(noticiaId);
+    public void saveOrUpdate(@RequestBody News newsId) {
+        newsRepository.save(newsId);
     }
 
 
     //TODO: elimina un evento por su id
     public void delete(Long id) {
-        noticiaRepository.deleteById(id);
+        newsRepository.deleteById(id);
     }
 
 }
