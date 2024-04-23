@@ -1,22 +1,29 @@
 package com.munievents.munievents.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
 
 @Entity
-@Table(name = "evento")
+@Table(name = "event")
 @Data
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String titulo;
-    private String descripcion;
-    private String fecha_inicio;
-    private String fecha_fin;
-    private String ubicacion;
-    private double precio;
-    private String fecha_creacion;
-    private int categoria_idcategoria;
+    private String title;
+    private String description;
+    private String start_date;
+    private String end_date;
+    private String location;
+    private double price;
+    private String creation_date;
+
+    //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
+    //@JsonIgnore
+    @ManyToOne
+    @JoinColumn(name = "categoryId")
+    private Category category;
+    private int coins;
 }

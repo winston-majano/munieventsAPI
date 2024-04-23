@@ -13,6 +13,7 @@ import java.util.Optional;
 @Service
 public class EventService {
 
+
     @Autowired
     EventRepository eventRepository;
 
@@ -37,4 +38,12 @@ public class EventService {
     public void delete(Long id) {
         eventRepository.deleteById(id);
     }
+
+    //TODO: implementando metodo personalizado de la entidad repositorio
+    public String getNameEventoById(Long id){
+       String nombreEvento=  eventRepository.getNameEventoById(id);
+        return "El evento es: "+nombreEvento;
+    }
+
+
 }
