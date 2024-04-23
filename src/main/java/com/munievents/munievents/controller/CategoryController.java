@@ -45,7 +45,7 @@ public class CategoryController {
 
         String message = "";
         try {
-            if (!categoryService.getCategoryById(categoryId).isEmpty()) {
+            if (categoryService.getCategoryById(categoryId).isPresent()) {
                 categoryService.saveOrUpdate(category);
                 message = "Categoria actualizada correctamente";
             } else {

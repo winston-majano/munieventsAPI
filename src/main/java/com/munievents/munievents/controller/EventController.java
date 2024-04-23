@@ -44,7 +44,7 @@ public class EventController {
 
         String message = "";
         try {
-            if (!eventService.getEvent(eventId).isEmpty()) {
+            if (eventService.getEvent(eventId).isPresent()) {
                 eventService.saveOrUpdate(event);
                 message = "Evento actualizado correctamente";
             } else {
