@@ -13,38 +13,38 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.munievents.munievents.entity.Subscripcion;
-import com.munievents.munievents.service.SubscripcionService;
+import com.munievents.munievents.entity.Subscription;
+import com.munievents.munievents.service.SubscriptionService;
 
 @RestController
 @RequestMapping(path = "api/subscripcion")
-public class SubscripcionController {
+public class SubscriptionController {
     
     @Autowired
-    private final SubscripcionService subscripService;
+    private final SubscriptionService subscripService;
 
-    public SubscripcionController(SubscripcionService subscripService) {
+    public SubscriptionController(SubscriptionService subscripService) {
         this.subscripService = subscripService;
     }
 
     @GetMapping("/subscripcions")
-    public List<Subscripcion> getAll() {
+    public List<Subscription> getAll() {
         return subscripService.getSubscripcions();
     }
 
     @GetMapping("/subscripcions/{idSubscrip}")
-    public Optional<Subscripcion> getById(@PathVariable("idSubscrip") Long subscripId) {
+    public Optional<Subscription> getById(@PathVariable("idSubscrip") Long subscripId) {
         return subscripService.getSubscripcion(subscripId);
     }
 
     @PostMapping("/subscripcion")
-    public String saveSubscripcion(@RequestBody Subscripcion subscripcion) {
+    public String saveSubscripcion(@RequestBody Subscription subscripcion) {
         subscripService.saveOrUpdate(subscripcion);
         return "Subscripcion creada correctamente";
     }
 
     @PutMapping("/subscripcion/{id}")
-    public String updateSubscripcion(@PathVariable("id") int subscripId, @RequestBody Subscripcion subscripcion) {
+    public String updateSubscripcion(@PathVariable("id") int subscripId, @RequestBody Subscription subscripcion) {
         String message = "";
         try {
             if (subscripService.getSubscripcion((long) subscripId).isPresent()) {

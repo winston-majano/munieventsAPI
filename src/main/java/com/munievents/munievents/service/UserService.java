@@ -43,8 +43,8 @@ public class UserService {
         return userRepository.save(usuario);
     }
 
-    public User  findOneByEmail(String email){
-        User  login = userRepository.findOneByEmail(email);
+    public Optional<User>  findOneByEmail(String email){
+        Optional<User>  login = userRepository.findOneByEmail(email);
         return  login;
     }
 }

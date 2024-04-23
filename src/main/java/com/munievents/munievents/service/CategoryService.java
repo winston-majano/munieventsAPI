@@ -1,7 +1,7 @@
 package com.munievents.munievents.service;
 
 import com.munievents.munievents.entity.Category;
-import com.munievents.munievents.entity.Event;
+//import com.munievents.munievents.entity.Event;
 import com.munievents.munievents.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
