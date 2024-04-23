@@ -1,7 +1,7 @@
 package com.munievents.munievents.controller;
 
 import org.springframework.web.bind.annotation.RestController;
-import com.munievents.munievents.entity.Noticia;
+import com.munievents.munievents.entity.News;
 import com.munievents.munievents.service.NoticiaService;
 import java.util.List;
 import java.util.Optional;
@@ -30,26 +30,26 @@ public class NoticiaController {
 
     //Nos lee todas las noticias
     @GetMapping("/noticia")
-    public List<Noticia> getNoticia() {
+    public List<News> getNoticia() {
         return noticiaService.getNoticia();
     }
 
     //Para buscar una noticia por su id
     @GetMapping("/noticia/{idNoticia}")
-    public Optional<Noticia> getNoticia(@PathVariable("idNoticia") Long id) {
+    public Optional<News> getNoticia(@PathVariable("idNoticia") Long id) {
         return noticiaService.getNoticia(id);
     }
 
     //Para guardar informacion
     @PostMapping("/noticia")
-    public String saveEvent(@RequestBody Noticia noticia) {
+    public String saveEvent(@RequestBody News noticia) {
         noticiaService.saveOrUpdate(noticia);
         return "Evento creado correctamente";
     }
 
     //TODO: actualizamos un evento por su id
     @PutMapping("/noticia/{id}")
-    public String saveUpdateNoticia(@PathVariable("id") Long noticiaId, @RequestBody Noticia noticia) {
+    public String saveUpdateNoticia(@PathVariable("id") Long noticiaId, @RequestBody News noticia) {
 
         String message = "";
         try {
