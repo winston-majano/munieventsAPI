@@ -4,6 +4,7 @@ import java.util.*;
 
 import com.munievents.munievents.entity.UserLogin;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -18,6 +19,7 @@ import com.munievents.munievents.service.UserService;
 
 @RestController
 @RequestMapping(path = "api/v1")
+@CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 
     private final UserService userService;
@@ -59,15 +61,18 @@ public class UserController {
         return "OK";
     }
 
-    //TODO: login
     @PostMapping("/usersLogin")
-    public String  add(@RequestBody UserLogin userLogin) {
-        User usario = userService.findOneByEmail (userLogin.getEmail());
-        if(usario.getPassword().equals(userLogin.getPassword())){
-            return "Usuario logueado correctamente";
-        }else{
-            return "Usuario no encontrado";
+    public int add(@RequestBody UserLogin userLogin) {
+        Optional<User> usuarioOptional = userService.findOneByEmail(userLogin.getEmail());
+        if (usuarioOptional.isPresent()) {
+            User usuario = usuarioOptional.get();
+            if (usuario.getPassword().equals(userLogin.getPassword())) {
+                return 1; 
+            } else {
+                return -1; 
+            }
+        } else {
+            return -1; 
         }
     }
-
 }
