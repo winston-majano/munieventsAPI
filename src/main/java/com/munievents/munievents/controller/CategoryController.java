@@ -39,6 +39,8 @@ public class CategoryController {
         return "Categoria creada correctamente";
     }
 
+    //TODO: ResposeEntity<Category>   y retorno una nueva ResponseEntity<>(_objeto, HttpStatus.CREATED)
+
     //TODO: actualizamos una categoria por su id
     @PutMapping("/category/{id}")
     public String saveUpdateCategory(@PathVariable("id") Long categoryId, @RequestBody Category category) {

@@ -18,29 +18,28 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/api/v1")
 public class NewsController {
 
-
     @Autowired
     private final NewsService newsService;
     
-    //Se agrega el metodo constructor inicilizando el noticiaService
+    //TODO:Se agrega el metodo constructor inicilizando el noticiaService
     public NewsController(NewsService newsService) {
         this.newsService = newsService;
     }
 
 
-    //Nos lee todas las noticias
+    //TODO: Nos lee todas las noticias
     @GetMapping("/news")
     public List<News> getNews() {
         return newsService.getNews();
     }
 
-    //Para buscar una noticia por su id
+    //TODO: Para buscar una noticia por su id
     @GetMapping("/news/{idNews}")
     public Optional<News> getNews(@PathVariable("idNews") Long id) {
         return newsService.getNews(id);
     }
 
-    //Para guardar informacion
+    //TODO:Para guardar informacion
     @PostMapping("/news")
     public String saveNews(@RequestBody News news) {
         newsService.saveOrUpdate(news);
@@ -54,7 +53,7 @@ public class NewsController {
         String message = "";
         try {
           
-            if (!newsService.getNews(newsId).isEmpty()) {
+            if (newsService.getNews(newsId).isPresent()) {
                 newsService.saveOrUpdate(news);
                 message = "Noticia actualizado correctamente";
             } else {

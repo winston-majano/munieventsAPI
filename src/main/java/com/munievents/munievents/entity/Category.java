@@ -3,6 +3,7 @@ package com.munievents.munievents.entity;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.util.List;
+import java.util.Set;
 
 
 @Entity
@@ -14,7 +15,7 @@ public class Category {
     private Long id;
     private String description;
     //TODO: hacemos la relacion de uno a muchos
-    @OneToMany(mappedBy = "category")
-    private List<Event> events;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "category" )
+    private Set<Event> events;
 
 }

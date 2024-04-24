@@ -4,6 +4,9 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
+import java.util.List;
+import java.util.Set;
+
 
 @Entity
 @Table(name = "event")
@@ -26,4 +29,8 @@ public class Event {
     @JoinColumn(name = "categoryId")
     private Category category;
     private int coins;
+    //@JsonIgnore
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event")
+    private Set<Photos> photos;
+    //private Set<Photos> photosset;
 }
