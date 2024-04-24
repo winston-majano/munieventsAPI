@@ -22,15 +22,16 @@ public class Event {
     private String location;
     private double price;
     private String creation_date;
-
+    private int category_id;
     //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
     //@JsonIgnore
-    @ManyToOne
-    @JoinColumn(name = "categoryId")
-    private Category category;
+   // @ManyToOne
+    //@JoinColumn(name = "categoryId")
+    //private Category category;
     private int coins;
     //@JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL,mappedBy = "event")
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "event_id")
     private Set<Photos> photos;
     //private Set<Photos> photosset;
 }
