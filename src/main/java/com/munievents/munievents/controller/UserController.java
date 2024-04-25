@@ -20,7 +20,7 @@ import com.munievents.munievents.entity.User;
 import com.munievents.munievents.service.UserService;
 
 @RestController
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = "http://localhost:5173")
 public class UserController {
 

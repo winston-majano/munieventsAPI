@@ -17,7 +17,7 @@ import com.munievents.munievents.entity.Subscription;
 import com.munievents.munievents.service.SubscriptionService;
 
 @RestController
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "/api/v1")
 public class SubscriptionController {
     
     @Autowired

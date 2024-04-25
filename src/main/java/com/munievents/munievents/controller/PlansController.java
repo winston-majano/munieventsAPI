@@ -17,7 +17,7 @@ import com.munievents.munievents.entity.Plans;
 import com.munievents.munievents.service.PlansService;
 
 @RestController
-@RequestMapping(path = "api/v1")
+@RequestMapping(path = "/api/v1")
 public class PlansController {
     @Autowired
     private final PlansService plansService;
