@@ -37,4 +37,13 @@ public class Event {
      @JoinColumn(name = "event_id")
      private Set<Photos> photos;
 
+    @ManyToMany(cascade =  CascadeType.ALL )
+    @JoinTable(
+            name = "purchase",
+            joinColumns =  @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id") )
+    private Set<User> user;
+
+
+
 }

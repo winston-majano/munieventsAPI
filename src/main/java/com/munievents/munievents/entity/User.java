@@ -6,15 +6,7 @@ import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.JoinTable;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -45,7 +37,12 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "user_rol_id") )
     //TODO: el JsonIgnoreProperties sirve para decirle al objeto json que propiedad no quires que se muestre
     @JsonIgnoreProperties(value="users")
-
     private Set<Rol> rol;
+
+    //TODO: cuando un usuario compra muchos eventos
+    @ManyToMany
+    private Set<Event> events;
+
+
 
 }
