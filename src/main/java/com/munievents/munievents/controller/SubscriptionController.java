@@ -17,7 +17,7 @@ import com.munievents.munievents.entity.Subscription;
 import com.munievents.munievents.service.SubscriptionService;
 
 @RestController
-@RequestMapping(path = "api/subscripcion")
+@RequestMapping(path = "api/subscription")
 public class SubscriptionController {
     
     @Autowired
@@ -27,29 +27,29 @@ public class SubscriptionController {
         this.subscripService = subscripService;
     }
 
-    @GetMapping("/subscripcions")
+    @GetMapping("/subscriptions")
     public List<Subscription> getAll() {
-        return subscripService.getSubscripcions();
+        return subscripService.getSubscriptions();
     }
 
-    @GetMapping("/subscripcions/{idSubscrip}")
+    @GetMapping("/subscriptions/{idSubscrip}")
     public Optional<Subscription> getById(@PathVariable("idSubscrip") Long subscripId) {
-        return subscripService.getSubscripcion(subscripId);
+        return subscripService.getSubscription(subscripId);
     }
 
-    @PostMapping("/subscripcion")
-    public String saveSubscripcion(@RequestBody Subscription subscripcion) {
-        subscripService.saveOrUpdate(subscripcion);
+    @PostMapping("/subscription")
+    public String saveSubscription(@RequestBody Subscription subscription) {
+        subscripService.saveOrUpdate(subscription);
         return "Subscripcion creada correctamente";
     }
 
-    @PutMapping("/subscripcion/{id}")
-    public String updateSubscripcion(@PathVariable("id") int subscripId, @RequestBody Subscription subscripcion) {
+    @PutMapping("/subscription/{id}")
+    public String updateSubscription(@PathVariable("id") int subscripId, @RequestBody Subscription subscription) {
         String message = "";
         try {
-            if (subscripService.getSubscripcion((long) subscripId).isPresent()) {
-                subscripcion.setId(subscripId); 
-                subscripService.saveOrUpdate(subscripcion);
+            if (subscripService.getSubscription((long) subscripId).isPresent()) {
+                subscription.setPlan_id(subscripId);
+                subscripService.saveOrUpdate(subscription);
                 message = "Subscripcion actualizada correctamente";
             } else {
                 message = "Subscripcion no existe";
@@ -60,7 +60,7 @@ public class SubscriptionController {
         return message;
     }
 
-    @DeleteMapping("/subscripcions/{id}")
+    @DeleteMapping("/subscriptions/{id}")
     public String deleteSubscripcion(@PathVariable("id") Long subscripId) {
         subscripService.delete(subscripId);
         return "Subscripcion eliminada correctamente";

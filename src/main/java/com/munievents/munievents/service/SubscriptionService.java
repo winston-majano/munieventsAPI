@@ -13,26 +13,26 @@ import com.munievents.munievents.repository.SubscriptionRepository;
 @Service
 public class SubscriptionService {
     @Autowired
-    SubscriptionRepository subscripcionRepository;
+    SubscriptionRepository subscriptionRepository;
 
     // TODO: retornamos todos los eventos
-    public List<Subscription> getSubscripcions() {
-        return subscripcionRepository.findAll();
+    public List<Subscription> getSubscriptions() {
+        return subscriptionRepository.findAll();
     }
 
     // TODO: buscamos un evento por su id
-    public Optional<Subscription> getSubscripcion(Long subscripId) {
-        return subscripcionRepository.findById(subscripId);
+    public Optional<Subscription> getSubscription(Long subscripId) {
+        return subscriptionRepository.findById(subscripId);
     }
 
     // TODO:guarda o actualiza el subscripcion
     @PostMapping
-    public void saveOrUpdate(@RequestBody Subscription subscripcion) {
-        subscripcionRepository.save(subscripcion);
+    public void saveOrUpdate(@RequestBody Subscription subscription) {
+        subscriptionRepository.save(subscription);
     }
 
     // TODO: elimina un subscripcion por su id
     public void delete(Long subscripId) {
-        subscripcionRepository.deleteById(subscripId);
+        subscriptionRepository.deleteById(subscripId);
     }
 }
