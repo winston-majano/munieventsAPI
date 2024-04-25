@@ -17,7 +17,7 @@ import com.munievents.munievents.entity.Subscription;
 import com.munievents.munievents.service.SubscriptionService;
 
 @RestController
-@RequestMapping(path = "api/subscription")
+@RequestMapping(path = "api/v1")
 public class SubscriptionController {
     
     @Autowired
@@ -37,18 +37,18 @@ public class SubscriptionController {
         return subscripService.getSubscription(subscripId);
     }
 
-    @PostMapping("/subscription")
+    @PostMapping("/subscriptions")
     public String saveSubscription(@RequestBody Subscription subscription) {
         subscripService.saveOrUpdate(subscription);
         return "Subscripcion creada correctamente";
     }
 
-    @PutMapping("/subscription/{id}")
+    @PutMapping("/subscriptions/{id}")
     public String updateSubscription(@PathVariable("id") int subscripId, @RequestBody Subscription subscription) {
         String message = "";
         try {
             if (subscripService.getSubscription((long) subscripId).isPresent()) {
-                subscription.setPlan_id(subscripId);
+               // subscription.setPlan_id(subscripId);
                 subscripService.saveOrUpdate(subscription);
                 message = "Subscripcion actualizada correctamente";
             } else {

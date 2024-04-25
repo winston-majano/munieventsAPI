@@ -21,7 +21,7 @@ public class Subscription {
     private Double price;
     private String start_date_sub;
     private String end_date_sub;
-    private int plan_id;
+    //private int plan_id;
 
     @ManyToOne
     @JoinColumn(name = "plan_id")
