@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 
+import java.time.LocalDateTime;
 import java.util.Set;
 
 
@@ -17,11 +18,11 @@ public class Event {
     private Long id;
     private String title;
     private String description;
-    private String start_date;
-    private String end_date;
+    private LocalDateTime start_date;
+    private LocalDateTime end_date;
     private String location;
     private double price;
-    private String creation_date;
+    private LocalDateTime creation_date;
 
     //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
     //@JsonIgnore

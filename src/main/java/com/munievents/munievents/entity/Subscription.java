@@ -8,6 +8,10 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.sql.Date;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "subscription")
@@ -19,9 +23,8 @@ public class Subscription {
     private Long id;
     private String description;
     private Double price;
-    private String start_date_sub;
-    private String end_date_sub;
-
+    private LocalDateTime start_date_sub;
+    private LocalDateTime end_date_sub;
 
      @ManyToOne
      @JoinColumn(name = "plan_id")
