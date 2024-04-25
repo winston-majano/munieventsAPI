@@ -11,8 +11,9 @@ public class Photos {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String photo_url;
+    //private int event_id;
     @ManyToOne
-    @JoinColumn(name = "eventId")
-    private Event event;
+    @JoinColumn(name = "event_id")
+    private Event events;
 
 }

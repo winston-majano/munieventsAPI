@@ -2,12 +2,7 @@ package com.munievents.munievents.entity;
 
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.Data;
 
 @Entity
@@ -22,6 +17,10 @@ public class Plans {
     private int qty_event;
 
     //TODO: hacemos la relacion de uno a muchos
+<<<<<<< HEAD
     // @OneToMany(mappedBy = "plan_id")
+=======
+    @OneToMany(cascade = CascadeType.ALL)
+>>>>>>> 6b441971759d668a7b4fd9ed93d8facdb7e6cf4f
     private List<Subscription> subscription;
 }
