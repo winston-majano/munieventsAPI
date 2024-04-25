@@ -9,9 +9,9 @@ import lombok.Data;
 public class Photos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     private String photo_url;
-    //private int event_id;
+
     @ManyToOne
     @JoinColumn(name = "event_id")
     private Event events;

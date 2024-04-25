@@ -3,9 +3,6 @@ package com.munievents.munievents.controller;
 import java.util.*;
 
 import com.munievents.munievents.entity.UserLogin;
-import com.munievents.munievents.repository.UserRepository;
-
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;

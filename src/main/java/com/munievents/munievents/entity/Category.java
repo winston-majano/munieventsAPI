@@ -1,11 +1,8 @@
 package com.munievents.munievents.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Data;
-import java.util.List;
 import java.util.Set;
-
 
 @Entity
 @Data
@@ -15,6 +12,7 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String description;
+
     //TODO: hacemos la relacion de uno a muchos
    // @OneToMany(cascade = CascadeType.ALL,mappedBy = "category" )
    // private List<Event> events;

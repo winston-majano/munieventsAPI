@@ -1,9 +1,9 @@
 package com.munievents.munievents.entity;
 
-import java.util.HashSet;
+
 import java.util.Set;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.CascadeType;
@@ -45,7 +45,7 @@ public class User {
         inverseJoinColumns = @JoinColumn(name = "user_rol_id") )
     //TODO: el JsonIgnoreProperties sirve para decirle al objeto json que propiedad no quires que se muestre
     @JsonIgnoreProperties(value="users")
-    //@JsonIgnore
+
     private Set<Rol> rol;
 
 }
