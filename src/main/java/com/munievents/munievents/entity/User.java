@@ -38,12 +38,14 @@ public class User {
     private int qty_event_sub;
     private String password;
 
-    @ManyToMany(cascade = { CascadeType.ALL })
+    @ManyToMany(cascade =  CascadeType.ALL )
     @JoinTable(
         name = "user_rol",
-        joinColumns = { @JoinColumn(name = "user_rol_id") },
-        inverseJoinColumns = {@JoinColumn(name = "users_id") })
-    @JsonIgnoreProperties("users")
-    private Set<Rol> roles = new HashSet<>();
+        joinColumns =  @JoinColumn(name = "users_id"),
+        inverseJoinColumns = @JoinColumn(name = "user_rol_id") )
+    //TODO: el JsonIgnoreProperties sirve para decirle al objeto json que propiedad no quires que se muestre
+    @JsonIgnoreProperties(value="users")
+    //@JsonIgnore
+    private Set<Rol> rol;
 
 }
