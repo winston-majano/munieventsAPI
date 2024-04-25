@@ -12,7 +12,4 @@ public interface EventRepository extends JpaRepository<Event, Long> {
     @Query(value = "select e.title from Event e where  e.id = ?1")
      String getNameEventoById(Long id);
 
-
-
-
 }

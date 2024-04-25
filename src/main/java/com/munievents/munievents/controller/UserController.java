@@ -3,6 +3,8 @@ package com.munievents.munievents.controller;
 import java.util.*;
 
 import com.munievents.munievents.entity.UserLogin;
+import com.munievents.munievents.repository.UserRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -23,14 +25,15 @@ import com.munievents.munievents.service.UserService;
 public class UserController {
 
     private final UserService userService;
+    ;
 
-    @Autowired
+    
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
     @GetMapping("/users")
-    public List<User> all() {
+    public List<User> getAll() {
         return userService.getAll();
     }
 
