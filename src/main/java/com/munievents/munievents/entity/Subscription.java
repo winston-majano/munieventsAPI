@@ -1,5 +1,6 @@
 package com.munievents.munievents.entity;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -23,7 +24,7 @@ public class Subscription {
     private String end_date_sub;
     private int plan_id;
 
-    @ManyToOne
-    @JoinColumn(name = "plan_id")
-    private Plans plans;
+    // @ManyToOne
+    // // @JoinColumn(name = "plan_id")
+    // private Plans plans;
 }

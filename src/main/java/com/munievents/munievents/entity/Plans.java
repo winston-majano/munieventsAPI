@@ -22,6 +22,6 @@ public class Plans {
     private int qty_event;
 
     //TODO: hacemos la relacion de uno a muchos
-    @OneToMany(mappedBy = "plan_id")
+    // @OneToMany(mappedBy = "plan_id")
     private List<Subscription> subscription;
 }
