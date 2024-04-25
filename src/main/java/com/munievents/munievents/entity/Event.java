@@ -30,8 +30,12 @@ public class Event {
     //private Category category;
     private int coins;
     //@JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "event_id")
-    private Set<Photos> photos;
+
+    // Lo dejo comentado porque da error.
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "event_id")
+    // private Set<Photos> photos;
+
+
     //private Set<Photos> photosset;
 }

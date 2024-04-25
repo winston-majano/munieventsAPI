@@ -19,9 +19,12 @@ public class Category {
    // @OneToMany(cascade = CascadeType.ALL,mappedBy = "category" )
     //private List<Event> events;
     //TODO: con el JSon ignore evitamos traer todos los json anidados de las tabalas relacionadas
-    @JsonIgnore
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "category_id")
-    private Set<Event> events;
+   
+   
+    //Lo dejo comentado porque da errores.
+    // @JsonIgnore
+    // @OneToMany(cascade = CascadeType.ALL)
+    // @JoinColumn(name = "category_id")
+    // private Set<Event> events;
 
 }

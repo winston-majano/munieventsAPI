@@ -1,21 +1,31 @@
 package com.munievents.munievents.entity;
 
+import java.util.HashSet;
+import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter @Setter
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name="users")
+@Table(name = "users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,7 +36,14 @@ public class User {
     private String full_name;
     private String alias;
     private int qty_event_sub;
-    private int rol_user_id;
     private String password;
+
+    @ManyToMany(cascade = { CascadeType.ALL })
+    @JoinTable(
+        name = "user_rol",
+        joinColumns = { @JoinColumn(name = "user_rol_id") },
+        inverseJoinColumns = {@JoinColumn(name = "users_id") })
+    @JsonIgnoreProperties("users")
+    private Set<Rol> roles = new HashSet<>();
 
 }
