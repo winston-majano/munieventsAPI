@@ -17,10 +17,7 @@ public class Plans {
     private int qty_event;
 
     //TODO: hacemos la relacion de uno a muchos
-<<<<<<< HEAD
-    // @OneToMany(mappedBy = "plan_id")
-=======
+
     @OneToMany(cascade = CascadeType.ALL)
->>>>>>> 6b441971759d668a7b4fd9ed93d8facdb7e6cf4f
     private List<Subscription> subscription;
 }

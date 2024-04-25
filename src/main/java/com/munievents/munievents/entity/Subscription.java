@@ -24,7 +24,7 @@ public class Subscription {
     private String end_date_sub;
     //private int plan_id;
 
-    // @ManyToOne
-    // // @JoinColumn(name = "plan_id")
-    // private Plans plans;
+     @ManyToOne
+     @JoinColumn(name = "plan_id")
+     private Plans plans;
 }
