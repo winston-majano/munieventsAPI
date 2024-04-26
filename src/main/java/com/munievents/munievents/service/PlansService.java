@@ -20,7 +20,7 @@ public class PlansService {
         return plansRepository.findAll();
     }
 
-    public Optional<Plans> getPlansById(Long plansId) {
+    public Optional<Plans> getPlansById(int plansId) {
         return plansRepository.findById(plansId);
     }
 
@@ -29,7 +29,7 @@ public class PlansService {
         plansRepository.save(plans);
     }
 
-    public void delete(Long plansId) {
+    public void delete(int plansId) {
         plansRepository.deleteById(plansId);
     }
     

@@ -34,7 +34,7 @@ public class PlansController {
     }
 
     @GetMapping("/plans/{idPlans}")
-    public Optional<Plans> getById(@PathVariable("idPlans") Long plansId) {
+    public Optional<Plans> getById(@PathVariable("idPlans") int plansId) {
         return plansService.getPlansById(plansId);
     }
 
@@ -48,7 +48,7 @@ public class PlansController {
 
     //TODO: actualizamos una categoria por su id
     @PutMapping("/plans/{id}")
-    public String saveUpdatePlans(@PathVariable("id") Long plansId, @RequestBody Plans plans) {
+    public String saveUpdatePlans(@PathVariable("id") int plansId, @RequestBody Plans plans) {
 
         String message = "";
         try {
@@ -67,7 +67,7 @@ public class PlansController {
 
     //TODO: enviamos como parametros el id de la categoria para eliminar una categoria
     @DeleteMapping("/plans/{id}")
-    public String delete(@PathVariable("id") Long plansId) {
+    public String delete(@PathVariable("id") int plansId) {
         plansService.delete(plansId);
         return "plano eliminado correctamente";
     }

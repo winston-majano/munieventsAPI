@@ -23,7 +23,7 @@ public class PurchaseService {
     }
 
     //TODO: buscamos una compra por su id
-    public Optional<Purchase> getPurchaseById(Long id) {
+    public Optional<Purchase> getPurchaseById(int id) {
         return purchaseRepository.findById(id);
     }
 
@@ -35,7 +35,7 @@ public class PurchaseService {
 
 
     //TODO: elimina una compra por su id
-    public void delete(Long id) {
+    public void delete(int id) {
         purchaseRepository.deleteById(id);
     }
 

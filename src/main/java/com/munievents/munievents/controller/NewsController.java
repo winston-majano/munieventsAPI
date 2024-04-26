@@ -35,7 +35,7 @@ public class NewsController {
 
     //TODO: Para buscar una noticia por su id
     @GetMapping("/news/{idNews}")
-    public Optional<News> getNews(@PathVariable("idNews") Long id) {
+    public Optional<News> getNews(@PathVariable("idNews") int id) {
         return newsService.getNews(id);
     }
 
@@ -48,7 +48,7 @@ public class NewsController {
 
     //TODO: actualizamos un evento por su id
     @PutMapping("/news/{id}")
-    public String saveUpdateNews(@PathVariable("id") Long newsId, @RequestBody News news) {
+    public String saveUpdateNews(@PathVariable("id") int newsId, @RequestBody News news) {
 
         String message = "";
         try {
@@ -68,7 +68,7 @@ public class NewsController {
 
     //TODO: enviamos como parametros el id del evento para eliminar el vento
     @DeleteMapping("/news/{id}")
-    public String delete(@PathVariable("id") Long newsId) {
+    public String delete(@PathVariable("id") int newsId) {
         newsService.delete(newsId);
         return "Noticia eliminado correctamente";
 

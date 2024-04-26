@@ -22,7 +22,7 @@ public class CategoryService {
     }
 
     //TODO: buscamos una categoria por su id
-    public Optional<Category> getCategoryById(Long id) {
+    public Optional<Category> getCategoryById(int id) {
         return categoryRepository.findById(id);
     }
 
@@ -34,7 +34,7 @@ public class CategoryService {
 
 
     //TODO: elimina una categoria por su id
-    public void delete(Long id) {
+    public void delete(int id) {
         categoryRepository.deleteById(id);
     }
 }

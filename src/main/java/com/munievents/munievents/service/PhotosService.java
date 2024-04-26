@@ -25,7 +25,7 @@
      }
 
      //TODO: buscamos una foto por su id
-     public Optional<Photos> getPhotos(Long id) {
+     public Optional<Photos> getPhotos(int id) {
          return photosRepository.findById(id);
      }
 
@@ -37,7 +37,7 @@
 
 
      //TODO: elimina una foto por su id
-     public void delete(Long id) {
+     public void delete(int id) {
          photosRepository.deleteById(id);
      }
 

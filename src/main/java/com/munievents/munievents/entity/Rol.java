@@ -9,9 +9,10 @@ import lombok.Data;
 @Data
 public class Rol {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String description;
 
-    @ManyToMany
-    private Set<User> users;
+   // @ManyToMany
+   // private Set<User> users;
 } 

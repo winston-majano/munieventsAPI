@@ -23,7 +23,7 @@ public class EventService {
     }
 
     //TODO: buscamos un evento por su id
-    public Optional<Event> getEvent(Long id) {
+    public Optional<Event> getEvent(int id) {
         return eventRepository.findById(id);
     }
 
@@ -35,12 +35,12 @@ public class EventService {
 
 
     //TODO: elimina un evento por su id
-    public void delete(Long id) {
+    public void delete(int id) {
         eventRepository.deleteById(id);
     }
 
     //TODO: implementando metodo personalizado de la entidad repositorio
-    public String getNameEventoById(Long id){
+    public String getNameEventoById(int id){
        String nombreEvento=  eventRepository.getNameEventoById(id);
         return "El evento es: "+nombreEvento;
     }

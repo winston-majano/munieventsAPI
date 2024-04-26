@@ -11,13 +11,13 @@ import lombok.Data;
 public class Plans {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String description;
     private int price;
     private int qty_event;
 
     //TODO: hacemos la relacion de uno a muchos
-
     @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "plan_id")
     private List<Subscription> subscription;
 }

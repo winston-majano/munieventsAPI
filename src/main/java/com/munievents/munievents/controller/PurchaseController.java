@@ -27,7 +27,7 @@ public class PurchaseController {
 
     //TODO: obtenemos una compra por su id
     @GetMapping("/purchase/{idPurchase}")
-    public Optional<Purchase> getById(@PathVariable("idPurchase") Long purchaseId) {
+    public Optional<Purchase> getById(@PathVariable("idPurchase") int purchaseId) {
         return purchaseService.getPurchaseById(purchaseId);
     }
 
@@ -41,7 +41,7 @@ public class PurchaseController {
 
     //TODO: actualizamos una compra por su id
     @PutMapping("/purchase/{id}")
-    public String saveUpdateEvent(@PathVariable("id") Long purchaseId, @RequestBody Purchase purchase) {
+    public String saveUpdateEvent(@PathVariable("id") int purchaseId, @RequestBody Purchase purchase) {
 
         String message = "";
         try {
@@ -60,7 +60,7 @@ public class PurchaseController {
 
     //TODO: enviamos como parametros el id de la compra
     @DeleteMapping("/purchase/{id}")
-    public String delete(@PathVariable("id") Long purchaseId) {
+    public String delete(@PathVariable("id") int purchaseId) {
         purchaseService.delete(purchaseId);
         return "Compra eliminada correctamente";
     }

@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Purchase {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private int event_id;
     private int user_id;
     private LocalDateTime purchase_date;

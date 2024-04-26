@@ -6,6 +6,6 @@ import com.munievents.munievents.entity.News;
 
 
     @Repository
-    public interface INewsRepository extends JpaRepository<News, Long> {
+    public interface INewsRepository extends JpaRepository<News, Integer> {
         
     }

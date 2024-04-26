@@ -15,7 +15,7 @@ import java.util.Set;
 public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String title;
     private String description;
     private LocalDateTime start_date;
@@ -26,7 +26,6 @@ public class Event {
 
     //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
     //@JsonIgnore
-
     @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
@@ -43,7 +42,5 @@ public class Event {
             joinColumns =  @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id") )
     private Set<User> user;
-
-
 
 }

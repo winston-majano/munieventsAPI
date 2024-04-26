@@ -40,8 +40,8 @@ public class User {
     private Set<Rol> rol;
 
     //TODO: cuando un usuario compra muchos eventos
-    @ManyToMany
-    private Set<Event> events;
+  //  @ManyToMany
+   // private Set<Event> events;
 
 
 

@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 
 
 @Repository
-public interface PlansRepository extends JpaRepository<Plans, Long>{
+public interface PlansRepository extends JpaRepository<Plans, Integer>{
     
 }

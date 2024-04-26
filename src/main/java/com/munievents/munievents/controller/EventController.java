@@ -26,7 +26,7 @@ public class EventController {
     }
 
     @GetMapping("/events/{idEvent}")
-    public Optional<Event> getById(@PathVariable("idEvent") Long eventId) {
+    public Optional<Event> getById(@PathVariable("idEvent") int eventId) {
         return eventService.getEvent(eventId);
     }
 
@@ -40,7 +40,7 @@ public class EventController {
 
     //TODO: actualizamos un evento por su id
     @PutMapping("/events/{id}")
-    public String saveUpdateEvent(@PathVariable("id") Long eventId, @RequestBody Event event) {
+    public String saveUpdateEvent(@PathVariable("id") int eventId, @RequestBody Event event) {
 
         String message = "";
         try {
@@ -59,14 +59,14 @@ public class EventController {
 
     //TODO: enviamos como parametros el id del evento para eliminar el vento
     @DeleteMapping("/events/{id}")
-    public String delete(@PathVariable("id") Long eventId) {
+    public String delete(@PathVariable("id") int eventId) {
         eventService.delete(eventId);
         return "Evento eliminado correctamente";
     }
 
     //TODO: ejemplo de JPQL para mostrar solo un dato del query personalizado
     @GetMapping("/events/jpql/{idEvent}")
-    public String getNameEventoById(@PathVariable("idEvent") Long idEvent) {
+    public String getNameEventoById(@PathVariable("idEvent") int idEvent) {
         return eventService.getNameEventoById(idEvent);
     }
 

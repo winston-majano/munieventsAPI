@@ -21,7 +21,7 @@ public class SubscriptionService {
     }
 
     // TODO: buscamos un evento por su id
-    public Optional<Subscription> getSubscription(Long subscripId) {
+    public Optional<Subscription> getSubscription(int subscripId) {
         return subscriptionRepository.findById(subscripId);
     }
 
@@ -32,7 +32,7 @@ public class SubscriptionService {
     }
 
     // TODO: elimina un subscripcion por su id
-    public void delete(Long subscripId) {
+    public void delete(int subscripId) {
         subscriptionRepository.deleteById(subscripId);
     }
 }

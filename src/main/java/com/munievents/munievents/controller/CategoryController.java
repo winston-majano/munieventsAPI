@@ -27,7 +27,7 @@ public class CategoryController {
     }
 
     @GetMapping("/category/{idCategory}")
-    public Optional<Category> getById(@PathVariable("idCategory") Long categoryId) {
+    public Optional<Category> getById(@PathVariable("idCategory") int categoryId) {
         return categoryService.getCategoryById(categoryId);
     }
 
@@ -43,7 +43,7 @@ public class CategoryController {
 
     //TODO: actualizamos una categoria por su id
     @PutMapping("/category/{id}")
-    public String saveUpdateCategory(@PathVariable("id") Long categoryId, @RequestBody Category category) {
+    public String saveUpdateCategory(@PathVariable("id") int categoryId, @RequestBody Category category) {
 
         String message = "";
         try {
@@ -62,7 +62,7 @@ public class CategoryController {
 
     //TODO: enviamos como parametros el id de la categoria para eliminar una categoria
     @DeleteMapping("/category/{id}")
-    public String delete(@PathVariable("id") Long categoryId) {
+    public String delete(@PathVariable("id") int categoryId) {
         categoryService.delete(categoryId);
         return "Categoria eliminada correctamente";
     }

@@ -9,7 +9,7 @@ import lombok.Data;
 public class Photos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String photo_url;
 
     @ManyToOne

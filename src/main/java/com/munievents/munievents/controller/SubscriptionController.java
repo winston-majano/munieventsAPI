@@ -33,7 +33,7 @@ public class SubscriptionController {
     }
 
     @GetMapping("/subscriptions/{idSubscrip}")
-    public Optional<Subscription> getById(@PathVariable("idSubscrip") Long subscripId) {
+    public Optional<Subscription> getById(@PathVariable("idSubscrip") int subscripId) {
         return subscripService.getSubscription(subscripId);
     }
 
@@ -47,7 +47,7 @@ public class SubscriptionController {
     public String updateSubscription(@PathVariable("id") int subscripId, @RequestBody Subscription subscription) {
         String message = "";
         try {
-            if (subscripService.getSubscription((long) subscripId).isPresent()) {
+            if (subscripService.getSubscription((int) subscripId).isPresent()) {
                // subscription.setPlan_id(subscripId);
                 subscripService.saveOrUpdate(subscription);
                 message = "Subscripcion actualizada correctamente";
@@ -61,7 +61,7 @@ public class SubscriptionController {
     }
 
     @DeleteMapping("/subscriptions/{id}")
-    public String deleteSubscripcion(@PathVariable("id") Long subscripId) {
+    public String deleteSubscripcion(@PathVariable("id") int subscripId) {
         subscripService.delete(subscripId);
         return "Subscripcion eliminada correctamente";
     }

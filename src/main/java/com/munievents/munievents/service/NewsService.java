@@ -25,7 +25,7 @@ public class NewsService {
 
     //TODO: buscamos un evento por su id
     @GetMapping
-    public Optional<News> getNews(Long id) {
+    public Optional<News> getNews(int id) {
         return newsRepository.findById(id);
     }
    
@@ -37,7 +37,7 @@ public class NewsService {
 
 
     //TODO: elimina un evento por su id
-    public void delete(Long id) {
+    public void delete(int id) {
         newsRepository.deleteById(id);
     }
 

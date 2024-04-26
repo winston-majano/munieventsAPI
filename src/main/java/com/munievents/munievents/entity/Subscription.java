@@ -20,13 +20,13 @@ public class Subscription {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String description;
     private Double price;
     private LocalDateTime start_date_sub;
     private LocalDateTime end_date_sub;
 
-     @ManyToOne
-     @JoinColumn(name = "plan_id")
-     private Plans plans;
+     //@ManyToOne
+    // @JoinColumn(name = "plan_id")
+     //private Plans plans;
 }

@@ -10,7 +10,7 @@ import java.util.Set;
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private int id;
     private String description;
 
     //TODO: hacemos la relacion de uno a muchos
