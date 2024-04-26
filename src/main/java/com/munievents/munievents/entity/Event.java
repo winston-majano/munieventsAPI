@@ -1,6 +1,8 @@
 package com.munievents.munievents.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,6 +36,7 @@ public class Event {
     // Lo dejo comentado porque da error.
      @OneToMany(cascade = CascadeType.ALL)
      @JoinColumn(name = "event_id")
+     @JsonIgnore
      private Set<Photos> photos;
 
     @ManyToMany(cascade =  CascadeType.ALL )
@@ -41,6 +44,15 @@ public class Event {
             name = "purchase",
             joinColumns =  @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id") )
+    //@JsonIgnore
     private Set<User> user;
 
+
+    @ManyToMany(cascade =  CascadeType.ALL )
+    @JoinTable(
+            name = "reviews",
+            joinColumns =  @JoinColumn(name = "event_id"),
+            inverseJoinColumns = @JoinColumn(name = "user_id") )
+    @JsonIgnore
+    private Set<User> users;
 }

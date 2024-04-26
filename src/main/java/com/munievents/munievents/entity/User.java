@@ -43,6 +43,15 @@ public class User {
   //  @ManyToMany
    // private Set<Event> events;
 
+//    @ManyToMany(cascade =  CascadeType.ALL )
+//    @JoinTable(
+//            name = "reviews",
+//            joinColumns =  @JoinColumn(name = "user_id"),
+//            inverseJoinColumns = @JoinColumn(name = "event_id") )
+//    //TODO: el JsonIgnoreProperties sirve para decirle al objeto json que propiedad no quires que se muestre
+//   // @JsonIgnoreProperties(value="users")
+//    private Set<Event> eventSet;
+
 
 
 }
