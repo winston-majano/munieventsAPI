@@ -22,7 +22,6 @@ import com.munievents.munievents.service.UserService;
 public class UserController {
 
     private final UserService userService;
-    ;
 
     
     public UserController(UserService userService) {
