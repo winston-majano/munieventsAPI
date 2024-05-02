@@ -13,8 +13,8 @@ public class News {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private String title;
-    private String descripcion;
-    private String image_news;
+    private String description;
+    private String image_new;
 
 
 }

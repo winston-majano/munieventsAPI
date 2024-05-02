@@ -13,6 +13,7 @@ import java.util.Optional;
 
 @RequestMapping(path = "/api/v1")
 @RestController
+@CrossOrigin(origins = {"http://localhost:5173","http://localhost:8080"})
 public class PhotosController {
 
     @Autowired
