@@ -3,6 +3,9 @@ package com.munievents.munievents.controller;
 import java.util.*;
 
 import com.munievents.munievents.entity.UserLogin;
+
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -61,17 +64,20 @@ public class UserController {
     }
 
     @PostMapping("/usersLogin")
-    public int add(@RequestBody UserLogin userLogin) {
+    public ResponseEntity<User> login(@RequestBody UserLogin userLogin) {
         Optional<User> usuarioOptional = userService.findOneByEmail(userLogin.getEmail());
         if (usuarioOptional.isPresent()) {
             User usuario = usuarioOptional.get();
             if (usuario.getPassword().equals(userLogin.getPassword())) {
-                return 1; 
+                // Devuelve el objeto User en el cuerpo de la respuesta si la contraseña es correcta
+                return ResponseEntity.ok(usuario);
             } else {
-                return -1; 
+                // Devuelve un estado de no autorizado si la contraseña es incorrecta
+                return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
         } else {
-            return -1; 
+            // Devuelve un estado de no encontrado si el usuario no existe
+            return ResponseEntity.notFound().build();
         }
     }
 }
