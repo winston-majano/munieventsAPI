@@ -10,7 +10,9 @@
 	</parent>
 	<groupId>com.munievents</groupId>
 	<artifactId>munievents</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
+	<packaging>war</packaging>
+
 	<name>munievents</name>
 	<description>proyecto de eventos culturales cerca de ti</description>
 	<properties>
