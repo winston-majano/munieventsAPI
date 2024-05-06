@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+<<<<<<< HEAD
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,13 +14,20 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+=======
+import org.springframework.web.bind.annotation.*;
+>>>>>>> ed2e14e05344daa71ef11deb1e35b0677b06c294
 
 import com.munievents.munievents.entity.Plans;
 import com.munievents.munievents.service.PlansService;
 
 @RestController
 @RequestMapping(path = "/api/v1")
+<<<<<<< HEAD
 @CrossOrigin(origins = "http://localhost:5174")
+=======
+@CrossOrigin(origins = {"http://localhost:5173","http://localhost:8080"})
+>>>>>>> ed2e14e05344daa71ef11deb1e35b0677b06c294
 public class PlansController {
     @Autowired
     private final PlansService plansService;
