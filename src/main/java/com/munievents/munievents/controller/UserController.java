@@ -58,11 +58,11 @@ public class UserController {
     public String updateUser(@PathVariable int id, @RequestBody User usuario) {
         User u = userService.oneById(id).orElse(null);
         if (u == null) {
-            return "No encontrado";
+            return "No se ha actualizado correctamente";
         }
         usuario.setId(id);
         userService.save(usuario);
-        return "OK";
+        return "OK, usuario actualizado";
     }
 
     @PostMapping("/usersLogin")
