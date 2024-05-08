@@ -48,7 +48,7 @@ public class NewsController {
         try {
           
             if (newsService.getNews(newsId).isPresent()) {
-                newsService.saveOrUpdate(news);
+                newsService.updateNews(news);
                 message = "Noticia actualizado correctamente";
             } else {
                 message = "Noticia no existe";
