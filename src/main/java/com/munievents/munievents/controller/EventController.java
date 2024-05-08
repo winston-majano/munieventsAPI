@@ -43,28 +43,15 @@ public class EventController {
 
     //TODO: actualizamos un evento por su id
     @PutMapping("/events/{id}")
-    public String saveUpdateEvent(@PathVariable("id") int eventId, @RequestBody Event event) {
-
-        String message = "";
-        try {
-            if (eventService.getEvent(eventId).isPresent()) {
-                eventService.saveOrUpdate(event);
-                message = "Evento actualizado correctamente";
-            } else {
-                message = "Evento no existe";
-            }
-        } catch (Exception ex) {
-            message = ex.getMessage();
-        }
-        return message;
+    public ResponseEntity<String> updateEvent(@PathVariable("id") int eventId, @RequestBody Event event) {
+        return new ResponseEntity<String>(eventService.updateEvent(eventId, event), HttpStatus.OK);
     }
 
 
     //TODO: enviamos como parametros el id del evento para eliminar el vento
     @DeleteMapping("/events/{id}")
-    public String delete(@PathVariable("id") int eventId) {
-        eventService.delete(eventId);
-        return "Evento eliminado correctamente";
+    public ResponseEntity<String> delete(@PathVariable("id") int eventId) {
+        return new ResponseEntity<>(eventService.delete(eventId), HttpStatus.OK);
     }
 
     //TODO: ejemplo de JPQL para mostrar solo un dato del query personalizado

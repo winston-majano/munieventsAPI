@@ -12,6 +12,6 @@ public interface EventRepository extends JpaRepository<Event, Integer> {
 
     //TODO: querys personalizadas
     @Query(value = "select e.title from Event e where  e.id = ?1")
-     String getNameEventoById(int id);
+    boolean getNameEventoById(int id);
 
 }

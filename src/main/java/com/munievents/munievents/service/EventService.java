@@ -5,6 +5,7 @@ import com.munievents.munievents.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
@@ -27,21 +28,43 @@ public class EventService {
         return eventRepository.findById(id);
     }
 
-    //TODO:guarda o actualiza el evento
+    //TODO:crea un nuevo evento
     @PostMapping
     public void saveOrUpdate(@RequestBody Event event) {
         eventRepository.save(event);
     }
 
+    //TODO: actualiza un evento
+    @PutMapping
+    public String  updateEvent( int eventId, @RequestBody Event event)
+    {
+        String message = "";
+        if (!eventRepository.existsById(eventId) ) {
+            message = "Error al actualziar el evento";
+        } else {
+            eventRepository.saveAndFlush(event);
+            message = "Evento Actualizado correctamente";
+        }
+        return message;
+    }
+
 
     //TODO: elimina un evento por su id
-    public void delete(int id) {
-        eventRepository.deleteById(id);
+    public String  delete(int id) {
+        String messaje = "";
+        if(eventRepository.existsById(id)){
+            eventRepository.deleteById(id);
+            messaje = "Evento eliminado correctamente";
+        }else{
+            messaje = "Error al eliminar el registro o no existe ";
+        }
+
+       return messaje;
     }
 
     //TODO: implementando metodo personalizado de la entidad repositorio
     public String getNameEventoById(int id){
-       String nombreEvento=  eventRepository.getNameEventoById(id);
+       String nombreEvento= String.valueOf(eventRepository.getNameEventoById(id));
         return "El evento es: "+nombreEvento;
     }
 
