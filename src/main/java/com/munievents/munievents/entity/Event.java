@@ -27,6 +27,7 @@ public class Event {
     private LocalDateTime creation_date;
     private int category_id;
     private int user_id;
+    private String photo;
 
     //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
     //@JsonIgnore
