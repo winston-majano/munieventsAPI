@@ -12,7 +12,6 @@ import java.util.Set;
 
 
 @Entity
-@Table(name = "event")
 @Data
 public class Event {
     @Id
@@ -24,35 +23,39 @@ public class Event {
     private LocalDateTime end_date;
     private String location;
     private double price;
+    private int coins;
     private LocalDateTime creation_date;
+    private int category_id;
+    private int user_id;
 
     //TODO: relacionamos la tabla de muchos a uno, muchos eventos tendran una sola categoria
     //@JsonIgnore
-    @ManyToOne
+ /*   @ManyToOne
     @JoinColumn(name = "category_id")
     private Category category;
     private int coins;
-
+*/
     // Lo dejo comentado porque da error.
-     @OneToMany(cascade = CascadeType.ALL)
+  /*   @OneToMany(cascade = CascadeType.ALL)
      @JoinColumn(name = "event_id")
      @JsonIgnore
      private Set<Photos> photos;
-
-    @ManyToMany(cascade =  CascadeType.ALL )
+*/
+  /*  @ManyToMany(cascade =  CascadeType.ALL )
     @JoinTable(
             name = "purchase",
             joinColumns =  @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id") )
     //@JsonIgnore
     private Set<User> user;
-
-
-    @ManyToMany(cascade =  CascadeType.ALL )
+  */
+   /* @ManyToMany(cascade =  CascadeType.ALL )
     @JoinTable(
             name = "reviews",
             joinColumns =  @JoinColumn(name = "event_id"),
             inverseJoinColumns = @JoinColumn(name = "user_id") )
     @JsonIgnore
     private Set<User> users;
+
+    */
 }

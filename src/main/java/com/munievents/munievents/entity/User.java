@@ -7,15 +7,10 @@ import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @Setter
-@AllArgsConstructor
-@NoArgsConstructor
 @Entity
 @Table(name = "users")
 public class User {
@@ -30,7 +25,8 @@ public class User {
     private int qty_event_sub;
     private String password;
 
-    @ManyToMany(cascade =  CascadeType.ALL )
+
+  /*  @ManyToMany(cascade =  CascadeType.ALL )
     @JoinTable(
         name = "user_rol",
         joinColumns =  @JoinColumn(name = "users_id"),
@@ -38,19 +34,7 @@ public class User {
     //TODO: el JsonIgnoreProperties sirve para decirle al objeto json que propiedad no quires que se muestre
     @JsonIgnoreProperties(value="users")
     private Set<Rol> rol;
-
-    //TODO: cuando un usuario compra muchos eventos
-  //  @ManyToMany
-   // private Set<Event> events;
-
-//    @ManyToMany(cascade =  CascadeType.ALL )
-//    @JoinTable(
-//            name = "reviews",
-//            joinColumns =  @JoinColumn(name = "user_id"),
-//            inverseJoinColumns = @JoinColumn(name = "event_id") )
-//    //TODO: el JsonIgnoreProperties sirve para decirle al objeto json que propiedad no quires que se muestre
-//   // @JsonIgnoreProperties(value="users")
-//    private Set<Event> eventSet;
+*/
 
 
 

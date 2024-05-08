@@ -13,21 +13,10 @@ public class Category {
     private int id;
     private String description;
 
-    //TODO: hacemos la relacion de uno a muchos
-   // @OneToMany(cascade = CascadeType.ALL,mappedBy = "category" )
-   // private List<Event> events;
-    //TODO: con el JSon ignore evitamos traer todos los json anidados de las tabalas relacionadas
-
-    //Lo dejo comentado porque da errores.
-    // @JsonIgnore
-     //@OneToMany(cascade = CascadeType.ALL)
-     //@JoinColumn(name = "category_id")
 
 
-
-
-     @OneToMany(cascade = CascadeType.ALL)
-     @JoinColumn(name = "category_id")
+/*     @OneToMany(cascade = CascadeType.ALL)
+        @JoinColumn(name = "category_id")
      private Set<Event> events;
-
+*/
 }

@@ -17,7 +17,9 @@ public class Plans {
     private int qty_event;
 
     //TODO: hacemos la relacion de uno a muchos
-    @OneToMany(cascade = CascadeType.ALL)
+   /* @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "plan_id")
     private List<Subscription> subscription;
+
+    */
 }

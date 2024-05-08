@@ -3,6 +3,8 @@ package com.munievents.munievents.controller;
 import com.munievents.munievents.entity.Event;
 import com.munievents.munievents.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -34,9 +36,9 @@ public class EventController {
 
     //TODO: enviamos el body un nuevo evento
     @PostMapping("/events")
-    public String saveEvent(@RequestBody Event event) {
+    public ResponseEntity<String> saveEvent(@RequestBody Event event) {
         eventService.saveOrUpdate(event);
-        return "Evento creado correctamente";
+        return new ResponseEntity("Evento Creado Correctamente",HttpStatus.OK);
     }
 
     //TODO: actualizamos un evento por su id

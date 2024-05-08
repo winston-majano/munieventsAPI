@@ -2,7 +2,7 @@ package com.munievents.munievents.controller;
 
 import java.util.*;
 
-import com.munievents.munievents.entity.UserLogin;
+
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -15,9 +15,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import com.munievents.munievents.entity.UserLogin;
 
 import com.munievents.munievents.entity.User;
 import com.munievents.munievents.service.UserService;
+
 
 @RestController
 @RequestMapping(path = "/api/v1")
