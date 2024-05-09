@@ -4,6 +4,8 @@ package com.munievents.munievents.service;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 
@@ -28,8 +30,14 @@ public class UserService {
     }
 
     //Crear un nuevo usuario
-    public User saveAndFlush(User newUser) {
-        return userRepository.saveAndFlush(newUser);
+    public ResponseEntity<User> saveAndFlush(User newUser) {
+        Optional<User> nuevoUser = userRepository.findOneByEmail(newUser.getEmail());
+        if (nuevoUser.isPresent()) {
+            User usuario = nuevoUser.get();
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+
+        return new ResponseEntity<User>(userRepository.saveAndFlush(newUser), HttpStatus.OK);
     }
 
     //Elimina un usuario por su ID

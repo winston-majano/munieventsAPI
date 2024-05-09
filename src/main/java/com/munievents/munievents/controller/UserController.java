@@ -45,7 +45,8 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public User add(@RequestBody User newUser) {
+    public ResponseEntity<User> add(@RequestBody User newUser) {
+
         return userService.saveAndFlush(newUser);
     }
 
