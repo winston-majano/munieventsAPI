@@ -25,6 +25,7 @@ public class Subscription {
     private Double price;
     private LocalDateTime start_date_sub;
     private LocalDateTime end_date_sub;
+    private int plan_id;
 
      //@ManyToOne
     // @JoinColumn(name = "plan_id")
