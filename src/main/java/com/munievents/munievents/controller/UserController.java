@@ -3,7 +3,7 @@ package com.munievents.munievents.controller;
 import java.util.*;
 
 
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +24,7 @@ import com.munievents.munievents.service.UserService;
 @RestController
 @RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = "http://localhost:5173")
+@Tag(name = "User Controller")
 public class UserController {
 
     private final UserService userService;

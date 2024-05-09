@@ -3,6 +3,7 @@ package com.munievents.munievents.controller;
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -20,6 +21,7 @@ import com.munievents.munievents.service.SubscriptionService;
 @RestController
 @RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = "http://localhost:5174")
+@Tag(name = "Subscription Controller")
 public class SubscriptionController {
     
     @Autowired

@@ -1,5 +1,6 @@
 package com.munievents.munievents.controller;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.web.bind.annotation.*;
 import com.munievents.munievents.entity.News;
 import com.munievents.munievents.service.NewsService;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 @RestController
 @RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = {"http://localhost:5173","http://localhost:8080"})
+@Tag(name = "News Controller")
 public class NewsController {
 
     @Autowired
