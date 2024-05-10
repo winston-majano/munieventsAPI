@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +27,20 @@ public class UserService {
 
     //Devuelve un usuario seleccionado por ID
     public Optional<User> oneById(int id) {
-        return userRepository.findById(id);
+        Optional<User> UserById = userRepository.findById(id);
+        
+        if (UserById.isPresent()) {
+          
+            return new ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+        }
+        return UserById;
     }
 
     //Crear un nuevo usuario
     public ResponseEntity<User> saveAndFlush(User newUser) {
         Optional<User> nuevoUser = userRepository.findOneByEmail(newUser.getEmail());
         if (nuevoUser.isPresent()) {
-            User usuario = nuevoUser.get();
+          
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
 

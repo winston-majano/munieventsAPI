@@ -1,11 +1,5 @@
 package com.munievents.munievents.entity;
 
-
-import java.util.Set;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
