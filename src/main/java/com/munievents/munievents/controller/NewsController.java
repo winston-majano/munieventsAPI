@@ -40,7 +40,7 @@ public class NewsController {
         return "Noticia creada correctamente";
     }
 
-    //TODO: actualizamos un evento por su id
+     //TODO: actualizamos un evento por su id
     @PutMapping("/news/{id}")
     public String saveUpdateNews(@PathVariable("id") int newsId, @RequestBody News news) {
 

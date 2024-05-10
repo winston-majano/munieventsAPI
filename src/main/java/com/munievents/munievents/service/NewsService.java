@@ -18,26 +18,26 @@ public class NewsService {
     @Autowired
     INewsRepository newsRepository;
 
-    //TODO: retornamos todos los eventos
+    //TODO: retornamos todos los noticia
     @GetMapping
     public List<News> getNews() {
         return newsRepository.findAll();
     }
 
-    //TODO: buscamos un evento por su id
+    //TODO: buscamos un noticia por su id
     @GetMapping
     public Optional<News> getNews(int id) {
         return newsRepository.findById(id);
     }
    
-    //TODO:guarda o actualiza el evento
+    //TODO:guarda o actualiza el noticia
     @PostMapping
     public void saveOrUpdate(@RequestBody News newsId) {
         newsRepository.save(newsId);
     }
 
 
-    //TODO: elimina un evento por su id
+    //TODO: elimina un noticia por su id
     public void delete(int id) {
         newsRepository.deleteById(id);
     }
