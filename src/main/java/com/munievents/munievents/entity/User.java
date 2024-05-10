@@ -1,11 +1,6 @@
 package com.munievents.munievents.entity;
 
-
-import java.util.Set;
-
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -23,6 +18,8 @@ public class User {
     private String full_name;
     private String alias;
     private int qty_event_sub;
+    //@JsonIgnoreProperties(value="password")
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
 

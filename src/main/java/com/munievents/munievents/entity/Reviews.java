@@ -1,3 +1,4 @@
+//FUTURA IMPLEMENTACION
 //package com.munievents.munievents.entity;
 //
 //

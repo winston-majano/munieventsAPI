@@ -2,6 +2,7 @@ package com.munievents.munievents.controller;
 
 import com.munievents.munievents.entity.Event;
 import com.munievents.munievents.service.EventService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +14,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = {"http://localhost:5173","http://localhost:8080"})
+@Tag(name = "Events Controller")
 public class EventController {
 
     @Autowired

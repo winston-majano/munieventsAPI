@@ -2,6 +2,7 @@ package com.munievents.munievents.controller;
 
 import com.munievents.munievents.entity.Category;
 import com.munievents.munievents.service.CategoryService;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -10,6 +11,7 @@ import java.util.Optional;
 
 @RestController
 @RequestMapping(path = "api/v1")
+@Tag(name = "Category Controller")
 public class CategoryController {
 
     @Autowired

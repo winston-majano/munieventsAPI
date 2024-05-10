@@ -3,7 +3,7 @@ package com.munievents.munievents.controller;
 import java.util.*;
 
 
-
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -24,6 +24,7 @@ import com.munievents.munievents.service.UserService;
 @RestController
 @RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = "http://localhost:5173")
+@Tag(name = "User Controller")
 public class UserController {
 
     private final UserService userService;
@@ -39,12 +40,13 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public User oneById(@PathVariable int id) {
-        return userService.oneById(id).orElse(null);
+    public Optional<User> oneById(@PathVariable int id) {
+        return userService.oneById(id);
     }
 
     @PostMapping("/users")
-    public User add(@RequestBody User newUser) {
+    public ResponseEntity<User> add(@RequestBody User newUser) {
+
         return userService.saveAndFlush(newUser);
     }
 
@@ -56,8 +58,8 @@ public class UserController {
 
     @PutMapping("/users/{id}")
     public String updateUser(@PathVariable int id, @RequestBody User usuario) {
-        User u = userService.oneById(id).orElse(null);
-        if (u == null) {
+        Optional<User> userUpdate = userService.oneById(id);
+        if (userUpdate == null) {
             return "No se ha actualizado correctamente";
         }
         usuario.setId(id);

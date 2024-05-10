@@ -3,6 +3,7 @@ package com.munievents.munievents.controller;
 import java.util.List;
 import java.util.Optional;
 
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +22,7 @@ import com.munievents.munievents.service.PlansService;
 @RestController
 @RequestMapping(path = "/api/v1")
 @CrossOrigin(origins = {"http://localhost:5173","http://localhost:5174","http://localhost:8080"})
-
+@Tag(name = "Plan Controller")
 public class PlansController {
     @Autowired
     private final PlansService plansService;
