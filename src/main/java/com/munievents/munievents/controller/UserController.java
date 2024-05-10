@@ -40,7 +40,7 @@ public class UserController {
     }
 
     @GetMapping("/users/{id}")
-    public ResponseEntity<User> oneById(@PathVariable int id) {
+    public Optional<User> oneById(@PathVariable int id) {
         return userService.oneById(id);
     }
 
@@ -58,8 +58,8 @@ public class UserController {
 
     @PutMapping("/users/{id}")
     public String updateUser(@PathVariable int id, @RequestBody User usuario) {
-        ResponseEntity<User> u = userService.oneById(id);
-        if (u == null) {
+        Optional<User> userUpdate = userService.oneById(id);
+        if (userUpdate == null) {
             return "No se ha actualizado correctamente";
         }
         usuario.setId(id);
