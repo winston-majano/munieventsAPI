@@ -27,7 +27,7 @@ public class CategoryService {
     }
 
     //TODO:guarda o actualiza la categoria
-    @PostMapping
+  
     public void saveOrUpdate(@RequestBody Category category) {
         categoryRepository.save(category);
     }

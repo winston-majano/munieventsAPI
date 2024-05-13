@@ -28,13 +28,13 @@ public class EventService {
     }
 
     //TODO:crea un nuevo evento
-    @PostMapping
+
     public void saveOrUpdate(@RequestBody Event event) {
         eventRepository.save(event);
     }
 
     //TODO: actualiza un evento
-    @PutMapping
+
     public String  updateEvent( int eventId, @RequestBody Event event)
     {
         String message = "";

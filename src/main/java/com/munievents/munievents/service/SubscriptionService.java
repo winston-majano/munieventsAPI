@@ -26,7 +26,7 @@ public class SubscriptionService {
     }
 
     // TODO:guarda o actualiza el subscripcion
-    @PostMapping
+   
     public void saveOrUpdate(@RequestBody Subscription subscription) {
         subscriptionRepository.save(subscription);
     }

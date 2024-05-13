@@ -24,7 +24,7 @@ public class PlansService {
         return plansRepository.findById(plansId);
     }
 
-    @PostMapping
+
     public void saveOrUpdate(@RequestBody Plans plans) {
         plansRepository.save(plans);
     }

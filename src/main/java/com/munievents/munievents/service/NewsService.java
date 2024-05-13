@@ -19,19 +19,16 @@ public class NewsService {
     INewsRepository newsRepository;
 
     //TODO: retornamos todos los noticia
-    @GetMapping
     public List<News> getNews() {
         return newsRepository.findAll();
     }
 
     //TODO: buscamos un noticia por su id
-    @GetMapping
     public Optional<News> getNews(int id) {
         return newsRepository.findById(id);
     }
    
     //TODO:guarda o actualiza el noticia
-    @PostMapping
     public void saveOrUpdate(@RequestBody News newsId) {
         newsRepository.save(newsId);
     }
@@ -42,7 +39,7 @@ public class NewsService {
         newsRepository.deleteById(id);
     }
 
-    @PutMapping
+
     public void updateNews(@RequestBody News newsId) {
         newsRepository.save(newsId);
     }
