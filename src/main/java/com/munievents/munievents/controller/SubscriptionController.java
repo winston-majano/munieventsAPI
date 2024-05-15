@@ -20,7 +20,7 @@ import com.munievents.munievents.service.SubscriptionService;
 
 @RestController
 @RequestMapping(path = "/api/v1")
-@CrossOrigin(origins = "http://localhost:5174")
+@CrossOrigin(origins = "*")
 @Tag(name = "Subscription Controller")
 public class SubscriptionController {
     

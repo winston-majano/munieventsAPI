@@ -23,7 +23,7 @@ import com.munievents.munievents.service.UserService;
 
 @RestController
 @RequestMapping(path = "/api/v1")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "*")
 @Tag(name = "User Controller")
 public class UserController {
 
@@ -59,7 +59,7 @@ public class UserController {
     @PutMapping("/users/{id}")
     public String updateUser(@PathVariable int id, @RequestBody User usuario) {
         Optional<User> userUpdate = userService.oneById(id);
-        if (userUpdate == null) {
+        if (!userUpdate.isPresent()) {
             return "No se ha actualizado correctamente";
         }
         usuario.setId(id);

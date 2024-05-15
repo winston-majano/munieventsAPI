@@ -21,7 +21,7 @@ import com.munievents.munievents.service.PlansService;
 
 @RestController
 @RequestMapping(path = "/api/v1")
-@CrossOrigin(origins = {"http://localhost:5173","http://localhost:5174","http://localhost:8080"})
+@CrossOrigin(origins = "*")
 @Tag(name = "Plan Controller")
 public class PlansController {
     @Autowired
