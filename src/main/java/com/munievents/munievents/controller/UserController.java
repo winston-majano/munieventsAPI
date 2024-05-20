@@ -31,14 +31,31 @@ public class UserController {
         this.userService = userService;
     }
 
+    // @GetMapping("/users")
+    // public List<User> getAll() {
+    // return userService.getAll();
+    // }
+
+    // Para retornar solo los usuarios activos.
     @GetMapping("/users")
     public List<User> getAll() {
-        return userService.getAll();
+        return userService.getAllActive();
     }
 
+    // @GetMapping("/users/{id}")
+    // public Optional<User> oneById(@PathVariable int id) {
+    // return userService.oneById(id);
+    // }
+
+    // Retorna los usuarios por ID que tengan el status activo
     @GetMapping("/users/{id}")
-    public Optional<User> oneById(@PathVariable int id) {
-        return userService.oneById(id);
+    public ResponseEntity<User> oneById(@PathVariable int id) {
+        Optional<User> userOptional = userService.oneByIdActive(id);
+        if (userOptional.isPresent()) {
+            return ResponseEntity.ok(userOptional.get());
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping("/users")
@@ -47,13 +64,26 @@ public class UserController {
         return userService.saveAndFlush(newUser);
     }
 
+    // @DeleteMapping("/users/{id}")
+    // public String deleteUserById(@PathVariable int id) {
+    // userService.deleteById(id);
+    // return "Usuario Eliminado";
+    // }
+
     @DeleteMapping("/users/{id}")
-    public String deleteUserById(@PathVariable int id) {
-        userService.deleteById(id);
-        return "Usuario Eliminado";
+    public String deactivateUserById(@PathVariable int id) {
+        Optional<User> userOptional = userService.oneById(id);
+        if (userOptional.isPresent()) {
+            User user = userOptional.get();
+            user.setStatus("D");
+            userService.save(user);
+            return "Usuario desactivado";
+        } else {
+            return "Usuario no encontrado";
+        }
     }
 
-    //PutMapping que funcionaba antes de bloquear el password en el get
+    // PutMapping que funcionaba antes de bloquear el password en el get
 
     // @PutMapping("/users/{id}")
     // public String updateUser(@PathVariable int id, @RequestBody User usuario) {
@@ -66,14 +96,34 @@ public class UserController {
     // return "OK, usuario actualizado";
     // }
 
+    // @PutMapping("/users/{id}")
+    // public String updateUser(@PathVariable int id, @RequestBody UserUpdate
+    // userUpdate) {
+    // Optional<User> userUpgrade = userService.oneById(id);
+    // if (!userUpgrade.isPresent()) {
+    // return "No se ha actualizado correctamente";
+    // }
+
+    // User usuario = userUpgrade.get();
+    // usuario.setImage_user(userUpdate.getImage_user());
+    // usuario.setEmail(userUpdate.getEmail());
+    // usuario.setPhone(userUpdate.getPhone());
+    // usuario.setFull_name(userUpdate.getFull_name());
+    // usuario.setAlias(userUpdate.getAlias());
+    // usuario.setQty_event_sub(userUpdate.getQty_event_sub());
+
+    // userService.save(usuario);
+    // return "OK, usuario actualizado";
+    // }
+
     @PutMapping("/users/{id}")
-    public String updateUser(@PathVariable int id, @RequestBody UserUpdate userUpdate) {
-        Optional<User> userUpgrade = userService.oneById(id);
-        if (!userUpgrade.isPresent()) {
-            return "No se ha actualizado correctamente";
+    public ResponseEntity<String> updateUser(@PathVariable int id, @RequestBody UserUpdate userUpdate) {
+        Optional<User> userOptional = userService.oneByIdActive(id);
+        if (!userOptional.isPresent()) {
+            return ResponseEntity.notFound().build();
         }
 
-        User usuario = userUpgrade.get();
+        User usuario = userOptional.get();
         usuario.setImage_user(userUpdate.getImage_user());
         usuario.setEmail(userUpdate.getEmail());
         usuario.setPhone(userUpdate.getPhone());
@@ -82,24 +132,39 @@ public class UserController {
         usuario.setQty_event_sub(userUpdate.getQty_event_sub());
 
         userService.save(usuario);
-        return "OK, usuario actualizado";
+        return ResponseEntity.ok("OK, usuario actualizado");
     }
+
+    // @PostMapping("/usersLogin")
+    // public ResponseEntity<User> login(@RequestBody UserLogin userLogin) {
+    //     Optional<User> usuarioOptional = userService.findOneByEmail(userLogin.getEmail());
+    //     if (usuarioOptional.isPresent()) {
+    //         User usuario = usuarioOptional.get();
+    //         if (usuario.getPassword().equals(userLogin.getPassword())) {
+    //             // Devuelve el objeto User en el cuerpo de la respuesta si la contraseña es
+    //             // correcta
+    //             return ResponseEntity.ok(usuario);
+    //         } else {
+    //             // Devuelve un estado de no autorizado si la contraseña es incorrecta
+    //             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    //         }
+    //     } else {
+    //         // Devuelve un estado de no encontrado si el usuario no existe
+    //         return ResponseEntity.notFound().build();
+    //     }
+    // }
 
     @PostMapping("/usersLogin")
     public ResponseEntity<User> login(@RequestBody UserLogin userLogin) {
-        Optional<User> usuarioOptional = userService.findOneByEmail(userLogin.getEmail());
+        Optional<User> usuarioOptional = userService.findOneByEmailAndStatus(userLogin.getEmail(), "A");
         if (usuarioOptional.isPresent()) {
             User usuario = usuarioOptional.get();
             if (usuario.getPassword().equals(userLogin.getPassword())) {
-                // Devuelve el objeto User en el cuerpo de la respuesta si la contraseña es
-                // correcta
                 return ResponseEntity.ok(usuario);
             } else {
-                // Devuelve un estado de no autorizado si la contraseña es incorrecta
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
             }
         } else {
-            // Devuelve un estado de no encontrado si el usuario no existe
             return ResponseEntity.notFound().build();
         }
     }

@@ -37,16 +37,29 @@ public class UserService {
 
     }
 
-    //Crear un nuevo usuario
-    public ResponseEntity<User> saveAndFlush(User newUser) {
-        Optional<User> nuevoUser = userRepository.findOneByEmail(newUser.getEmail());
-        if (nuevoUser.isPresent()) {
+    //Crear un nuevo usuario sin el status para poder desactivar
+    // public ResponseEntity<User> saveAndFlush(User newUser) {
+    //     Optional<User> nuevoUser = userRepository.findOneByEmail(newUser.getEmail());
+    //     if (nuevoUser.isPresent()) {
           
+    //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
+    //     }
+
+    //     return new ResponseEntity<User>(userRepository.saveAndFlush(newUser), HttpStatus.OK);
+    // }
+
+    //save & flush para crear un nuevo usuario. Primero se comprueba si el usuario ya existe, en caso que no exista se puede crear el usuario y se le asigna A inicialmente.
+    public ResponseEntity<User> saveAndFlush(User newUser) {
+        Optional<User> existingUser = userRepository.findOneByEmail(newUser.getEmail());
+        if (existingUser.isPresent()) {
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
         }
-
+    
+        newUser.setStatus("A"); // Establece el estado inicial a 'A' (activado)
         return new ResponseEntity<User>(userRepository.saveAndFlush(newUser), HttpStatus.OK);
     }
+    
+
 
     //Elimina un usuario por su ID
     public void deleteById(int id) {
@@ -62,4 +75,18 @@ public class UserService {
         Optional<User>  login = userRepository.findOneByEmail(email);
         return  login;
     }
+
+    public List<User> getAllActive() {
+        return userRepository.findByStatus("A");
+    }
+
+    public Optional<User> oneByIdActive(int id) {
+        Optional<User> userOptional = userRepository.findByIdAndStatus(id, "A");
+        return userOptional;
+    }
+
+    public Optional<User> findOneByEmailAndStatus(String email, String status) {
+        return userRepository.findOneByEmailAndStatus(email, status);
+    }
+    
 }
