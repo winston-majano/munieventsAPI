@@ -42,6 +42,8 @@ public class UserController {
         return userService.getAllActive();
     }
 
+    //Comentario de ejemplo
+
     // @GetMapping("/users/{id}")
     // public Optional<User> oneById(@PathVariable int id) {
     // return userService.oneById(id);
