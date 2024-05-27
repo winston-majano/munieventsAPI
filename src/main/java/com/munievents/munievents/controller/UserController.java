@@ -77,29 +77,7 @@ public class UserController {
         }
     }
 
-    // @PostMapping("/users")
-    // public ResponseEntity<User> add(
-    // @RequestParam("full_name") String fullName,
-    // @RequestParam("email") String email,
-    // @RequestParam("phone") String phone,
-    // @RequestParam("alias") String alias,
-    // @RequestParam("password") String password,
-    // @RequestParam("image_user") MultipartFile imageFile) {
-    // String imageUrl = saveImage(imageFile);
-    // if (imageUrl == null) {
-    // return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-    // }
-
-    // User newUser = new User();
-    // newUser.setFull_name(fullName);
-    // newUser.setEmail(email);
-    // newUser.setPhone(phone);
-    // newUser.setAlias(alias);
-    // newUser.setPassword(password);
-    // newUser.setImage_user(imageUrl);
-
-    // return userService.saveAndFlush(newUser);
-    // }
+   
 
     @PostMapping("/users")
     public ResponseEntity<User> add(
@@ -109,7 +87,7 @@ public class UserController {
             @RequestParam("alias") String alias,
             @RequestParam("password") String password,
             @RequestParam(value = "image_user", required = false) MultipartFile imageFile) {
-        String imageUrl = (imageFile != null && !imageFile.isEmpty()) ? saveImage(imageFile) : null;
+       String imageUrl = (imageFile != null && !imageFile.isEmpty()) ? saveImage(imageFile) : null;
 
         User newUser = new User();
         newUser.setFull_name(fullName);
@@ -122,31 +100,7 @@ public class UserController {
         return userService.saveAndFlush(newUser);
     }
 
-    // @PutMapping("/users/{id}")
-    // public ResponseEntity<User> updateUser(@PathVariable int id,
-    //         @RequestParam("full_name") String fullName,
-    //         @RequestParam("email") String email,
-    //         @RequestParam("phone") String phone,
-    //         @RequestParam("alias") String alias,
-    //         @RequestParam("image_user") MultipartFile imageFile) {
-    //     Optional<User> userOptional = userService.oneByIdActive(id);
-    //     if (!userOptional.isPresent()) {
-    //         return ResponseEntity.notFound().build();
-    //     }
 
-    //     User usuario = userOptional.get();
-    //     String imageUrl = saveImage(imageFile);
-    //     if (imageUrl != null) {
-    //         usuario.setImage_user(imageUrl);
-    //     }
-    //     usuario.setEmail(email);
-    //     usuario.setPhone(phone);
-    //     usuario.setFull_name(fullName);
-    //     usuario.setAlias(alias);
-
-    //     User updatedUser = userService.save(usuario);
-    //     return ResponseEntity.ok(updatedUser);
-    // }
 
     private String saveImage(MultipartFile file) {
         if (file.isEmpty()) {
