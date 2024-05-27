@@ -39,17 +39,7 @@ public class UserController {
         return userService.getAllActive();
     }
 
-<<<<<<< Updated upstream
-    //Comentario de ejemplo
 
-    // @GetMapping("/users/{id}")
-    // public Optional<User> oneById(@PathVariable int id) {
-    // return userService.oneById(id);
-    // }
-
-    // Retorna los usuarios por ID que tengan el status activo
-=======
->>>>>>> Stashed changes
     @GetMapping("/users/{id}")
     public ResponseEntity<User> oneById(@PathVariable int id) {
         Optional<User> userOptional = userService.oneByIdActive(id);
@@ -120,7 +110,7 @@ public class UserController {
             @RequestParam("alias") String alias,
             @RequestParam("password") String password,
             @RequestParam(value = "image_user", required = false) MultipartFile imageFile) {
-        String imageUrl = (imageFile != null && !imageFile.isEmpty()) ? saveImage(imageFile) : null;
+       String imageUrl = (imageFile != null && !imageFile.isEmpty()) ? saveImage(imageFile) : null;
 
         User newUser = new User();
         newUser.setFull_name(fullName);
