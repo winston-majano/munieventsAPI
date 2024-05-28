@@ -1,6 +1,7 @@
 package com.munievents.munievents.controller;
 
 import com.munievents.munievents.entity.Event;
+import com.munievents.munievents.entity.dto.EventUserDTO;
 import com.munievents.munievents.service.EventService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+
+import static java.lang.Integer.parseInt;
 
 @RestController
 @RequestMapping(path = "/api/v1")
@@ -26,7 +30,7 @@ public class EventController {
 
     //TODO: obtenemos todos los eventos
     @GetMapping("/events")
-    public List<Event> getAll() {
+    public List<EventUserDTO> getAll() {
         return eventService.getEvents();
     }
 
@@ -46,6 +50,7 @@ public class EventController {
     //TODO: actualizamos un evento por su id
     @PutMapping("/events/{id}")
     public ResponseEntity<String> updateEvent(@PathVariable("id") int eventId, @RequestBody Event event) {
+
         return new ResponseEntity<String>(eventService.updateEvent(eventId, event), HttpStatus.OK);
     }
 
@@ -61,5 +66,12 @@ public class EventController {
     public String getNameEventoById(@PathVariable("idEvent") int idEvent) {
         return eventService.getNameEventoById(idEvent);
     }
+
+    //TODO: eventos listados filtrados por usuario.
+    @GetMapping("/events/user/{idUser}")
+    public List<EventUserDTO>  getAllEventByUser(@PathVariable("idUser") int userId) {
+        return eventService.findAllEventByUserId(userId);
+    }
+
 
 }

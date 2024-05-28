@@ -16,7 +16,6 @@ public class MunieventsApplication extends SpringBootServletInitializer {
 	public static void main(String[] args) {
 		SpringApplication application = new SpringApplication(MunieventsApplication.class);
 		application.addListeners(new SwaggerConfig());
-		//SpringApplication.run(MunieventsApplication.class, args);
 		SpringApplication.run(MunieventsApplication.class, args);
 	}
 

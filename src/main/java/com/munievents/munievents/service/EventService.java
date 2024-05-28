@@ -1,6 +1,7 @@
 package com.munievents.munievents.service;
 
 import com.munievents.munievents.entity.Event;
+import com.munievents.munievents.entity.dto.EventUserDTO;
 import com.munievents.munievents.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +20,8 @@ public class EventService {
     EventRepository eventRepository;
 
     //TODO: retornamos todos los eventos
-    public List<Event> getEvents() {
-        return eventRepository.findAll();
+    public List<EventUserDTO> getEvents() {
+        return eventRepository.findAllEvent();
     }
 
     //TODO: buscamos un evento por su id
@@ -66,6 +68,13 @@ public class EventService {
        String nombreEvento= String.valueOf(eventRepository.getNameEventoById(id));
         return "El evento es: "+nombreEvento;
     }
+
+
+    //TODO: listando eventos por usuario, para los eventos que he creado.
+    public List<EventUserDTO> findAllEventByUserId(int id) {
+        return eventRepository.findAllEventByUserId(id);
+    }
+
 
 
 }
