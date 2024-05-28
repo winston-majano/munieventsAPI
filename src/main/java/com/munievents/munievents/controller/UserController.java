@@ -15,8 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import com.munievents.munievents.entity.User;
-import com.munievents.munievents.entity.UserLogin;
-import com.munievents.munievents.entity.UserUpdate;
+import com.munievents.munievents.entity.dto.UserLoginDTO;
+import com.munievents.munievents.entity.dto.UserUpdateDTO;
 import com.munievents.munievents.service.UserService;
 
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -63,7 +63,7 @@ public class UserController {
     }
 
     @PostMapping("/usersLogin")
-    public ResponseEntity<User> login(@RequestBody UserLogin userLogin) {
+    public ResponseEntity<User> login(@RequestBody UserLoginDTO userLogin) {
         Optional<User> usuarioOptional = userService.findOneByEmailAndStatus(userLogin.getEmail(), "A");
         if (usuarioOptional.isPresent()) {
             User usuario = usuarioOptional.get();

@@ -1,11 +1,11 @@
-package com.munievents.munievents.entity;
+package com.munievents.munievents.entity.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class UserUpdate {
+public class UserUpdateDTO {
     private String image_user;
     private String email;
     private String phone;
