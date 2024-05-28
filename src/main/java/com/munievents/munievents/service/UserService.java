@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 import com.munievents.munievents.entity.User;
 import com.munievents.munievents.repository.UserRepository;
 
-import javax.swing.text.html.Option;
+
 
 
 @Service
@@ -37,16 +37,7 @@ public class UserService {
 
     }
 
-    //Crear un nuevo usuario sin el status para poder desactivar
-    // public ResponseEntity<User> saveAndFlush(User newUser) {
-    //     Optional<User> nuevoUser = userRepository.findOneByEmail(newUser.getEmail());
-    //     if (nuevoUser.isPresent()) {
-          
-    //         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    //     }
-
-    //     return new ResponseEntity<User>(userRepository.saveAndFlush(newUser), HttpStatus.OK);
-    // }
+    
 
     //save & flush para crear un nuevo usuario. Primero se comprueba si el usuario ya existe, en caso que no exista se puede crear el usuario y se le asigna A inicialmente.
     public ResponseEntity<User> saveAndFlush(User newUser) {
