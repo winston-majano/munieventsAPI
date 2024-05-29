@@ -1,4 +1,4 @@
-package com.munievents.munievents;
+package com.munievents.munievents.config;
 
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Contact;
