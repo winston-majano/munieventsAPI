@@ -28,7 +28,10 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class UserController {
 
     private final UserService userService;
-    private static final String UPLOAD_DIR = "uploads/";
+    //private static final String UPLOAD_DIR = "uploads/";
+
+    private static final String UPLOAD_DIR = System
+            .getProperty("catalina.home") + "/webapps/munievents-0.1.3/uploads/";
 
     public UserController(UserService userService) {
         this.userService = userService;
@@ -107,12 +110,14 @@ public class UserController {
             return null;
         }
 
+        System.out.println("Ruta: "+System.getProperty("catalina.home"));
+
         try {
             String fileName = UUID.randomUUID().toString() + "_" + file.getOriginalFilename();
             Path path = Paths.get(UPLOAD_DIR + fileName);
             Files.createDirectories(path.getParent());
             Files.write(path, file.getBytes());
-            return fileName; // Solo el nombre del archivo
+            return "/uploads/"+fileName; // Solo el nombre del archivo
         } catch (IOException e) {
             e.printStackTrace();
             return null;

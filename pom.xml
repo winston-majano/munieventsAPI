@@ -10,7 +10,7 @@
 	</parent>
 	<groupId>com.munievents</groupId>
 	<artifactId>munievents</artifactId>
-	<version>0.0.1</version>
+	<version>0.1.3</version>
 	<packaging>war</packaging>
 
 	<name>munievents</name>
