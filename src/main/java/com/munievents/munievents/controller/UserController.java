@@ -30,6 +30,7 @@ public class UserController {
     private final UserService userService;
     //private static final String UPLOAD_DIR = "uploads/";
 
+    //TODO: obteniendo la ruta globla de la carpeta
     private static final String UPLOAD_DIR = System
             .getProperty("catalina.home") + "/webapps/munievents-0.1.3/uploads/";
 
