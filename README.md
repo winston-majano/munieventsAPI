@@ -87,12 +87,4 @@ Las contribuciones son bienvenidas. Si deseas contribuir, por favor sigue estos 
 4. Haz push a la rama (`git push origin feature/nueva-caracteristica`).
 5. Abre un Pull Request.
 
-6. Clona el repositorio:
-   ```bash
-   git clone https://github.com/winston-majano/munieventsAPI.git
 
-
-2.
-
-
-cd munievents
